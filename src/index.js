@@ -3,6 +3,7 @@ import XInput from './common/XInput'
 const components = [
   XInput
 ]
+// debugger
 const install = function(Vue, opts = {}) {
   // locale.use(opts.locale);
   // locale.i18n(opts.i18n);
@@ -22,19 +23,14 @@ const install = function(Vue, opts = {}) {
 
 };
 
-/* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-module.exports = {
-  // version: '1.0.0',
-  install,
-  XInput,
-  Test: () => {
-    console.log('test')
-    return 'sense-ui test'
-  }
-};
+const SenseUI = {}
+components.forEach(v => SenseUI[v.name] = v)
 
-module.exports.default = module.exports;
+export default SenseUI
+
+// module.exports = SenseUI
+// module.exports.default = module.exports;
